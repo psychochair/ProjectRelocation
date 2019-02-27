@@ -11,17 +11,17 @@ package project_relocation;
  */
 public class Timeline {
     
-    private Orders[] orders;
+    private ArrayList<Orders> orders;
     
     public Timeline(){
         
     }
     
-    public Orders[] getOrders() {
+    public ArrayList<Orders> getOrders() {
         return orders;
     }
 
-    public void addOrder(Orders[] orders) {
+    public void addOrder(Orders order) {
       
     } 
     
@@ -37,3 +37,4 @@ public class Timeline {
       
     } 
 }
+
