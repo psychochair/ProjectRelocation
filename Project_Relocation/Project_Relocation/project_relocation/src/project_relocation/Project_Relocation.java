@@ -33,8 +33,8 @@ public static void setScene(Scene x) {
     }
 
 //DIMENSIONS OF SCENE
-static double sceneHeight = 720;
-static double sceneWidth = 1280;
+static double sceneHeight = 900;
+static double sceneWidth = 1700;
 
 //CREATE NEW MENUS
 static menu1 menu1 = new menu1();
@@ -74,3 +74,4 @@ return sceneMenu2;
     }
     
 }
+
