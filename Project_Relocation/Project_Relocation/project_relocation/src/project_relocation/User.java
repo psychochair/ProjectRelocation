@@ -4,17 +4,18 @@ package project_relocation;
  *
  * @author chasa
  */
-public class User {
+public class User implements Rocket {
     
     private String username;
     private String filePath; 
     private Rocket rocket; 
     
     
-    public user(String u, String fP, Rocket r){
+    
+    public User(String u, String fP, Rocket r){
         username=u;
         filePath=fP;
-        Rocket=r;      
+        rocket=r;      
     }
     
     public String getUsername() {
