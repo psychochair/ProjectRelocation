@@ -36,11 +36,11 @@ public class Obstacle {
     }
 
     public String getImagelink() {
-        return imagelink;
+        return imageLink;
     }
 
     public void setImagelink(String imagelink) {
-        this.imagelink = imagelink;
+        this.imageLink = imagelink;
     }
     
 }
