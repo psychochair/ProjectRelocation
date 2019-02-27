@@ -33,23 +33,29 @@ public static void setScene(Scene x) {
     }
 
 //DIMENSIONS OF SCENE
-static double sceneHeight = 900;
-static double sceneWidth = 1700;
+final static double sceneHeight = 900;
+final static double sceneWidth = 1700;
 
 //CREATE NEW MENUS
 static menu1 menu1 = new menu1();
-static menu2 menu2 = new menu2();
+static menu2 newGameMenu = new menu2();
+static menu3 loadGameMenu = new menu3();
+
 
 //CREATE NEW SCENES FROM MENUS
 static Scene sceneMenu1 = new Scene(menu1, sceneWidth,sceneHeight);
-static Scene sceneMenu2 = new Scene(menu2, sceneWidth,sceneHeight);
+static Scene sceneNewGameMenu = new Scene(newGameMenu, sceneWidth,sceneHeight);
+static Scene sceneLoadGameMenu = new Scene(loadGameMenu, sceneWidth,sceneHeight);
 
 //METHOD TO RETURN THE MENUS
 public static Scene getMenu1(){
 return sceneMenu1;
 }
-public static Scene getMenu2(){
-return sceneMenu2;
+public static Scene getNewGameMenu(){
+return sceneNewGameMenu;
+}
+public static Scene getLoadGameMenu(){
+return sceneLoadGameMenu;
 }
 
     public void start(Stage primaryStage) throws Exception {
