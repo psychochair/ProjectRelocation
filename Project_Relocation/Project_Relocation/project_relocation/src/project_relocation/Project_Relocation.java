@@ -23,20 +23,43 @@ import javafx.stage.Stage;
  */
 public class Project_Relocation extends Application{
 
-    /**
-     * @param args the command line arguments
-     */
    
+private static Stage mainStage;
 
-    @Override
+
+//SET METHOD FOR THE MAIN STAGE - SET A NEW SCENE
+public static void setScene(Scene x) {
+        mainStage.setScene(x);
+    }
+
+//DIMENSIONS OF SCENE
+static double sceneHeight = 720;
+static double sceneWidth = 1280;
+
+//CREATE NEW MENUS
+static menu1 menu1 = new menu1();
+static menu2 menu2 = new menu2();
+
+//CREATE NEW SCENES FROM MENUS
+static Scene sceneMenu1 = new Scene(menu1, sceneWidth,sceneHeight);
+static Scene sceneMenu2 = new Scene(menu2, sceneWidth,sceneHeight);
+
+//METHOD TO RETURN THE MENUS
+public static Scene getMenu1(){
+return sceneMenu1;
+}
+public static Scene getMenu2(){
+return sceneMenu2;
+}
+
     public void start(Stage primaryStage) throws Exception {
+        mainStage = primaryStage;
         
-        menu1 menu1 = new menu1();
-        menu2 menu2 = new menu2();
-
         
-        Scene sceneMenu1 = new Scene(menu1, 1300,800);
-        Scene sceneMenu2 = new Scene(menu2, 1300,800);
+        
+        
+        
+        
         
         //scene.
         primaryStage.setTitle("Project_Relocation");
