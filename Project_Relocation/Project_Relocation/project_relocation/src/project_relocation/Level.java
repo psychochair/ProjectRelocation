@@ -5,11 +5,13 @@
  */
 package project_relocation;
 
+import javafx.scene.layout.Pane;
+
 /**
  *
  * @author sandr
  */
-public class Level {
+public class Level extends Pane{
     
     private String backgroundImgLink= ""; 
     private String floorImgLink= "";
