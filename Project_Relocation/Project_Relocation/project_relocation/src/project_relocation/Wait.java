@@ -5,6 +5,9 @@
  */
 package project_relocation;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
 /**
  *
  * @author Marc
@@ -13,6 +16,12 @@ public class Wait extends Orders{
     
     private double duration = 0;
     
+    
+    public Wait(){
+        Label l1 = new Label("Duration (s)");    
+    TextField tf1 = new TextField();
+    this.getChildren().addAll(l1,tf1);
+    }
     public double getDuration(){
     return duration;
     }
