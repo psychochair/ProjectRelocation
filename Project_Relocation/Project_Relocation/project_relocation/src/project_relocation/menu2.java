@@ -5,6 +5,8 @@
  */
 package project_relocation;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
@@ -37,6 +39,18 @@ public class menu2 extends BorderPane implements UI{
         gridPaneChoiceIntro.add(buttonYesIntro, 0,0);
         gridPaneChoiceIntro.setAlignment(Pos.CENTER);
         this.setBottom(gridPaneChoiceIntro);
+        
+        
+        
+        
+        buttonYesIntro.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+            Project_Relocation.setScene(Project_Relocation.sceneLevel1);
+            }
+        });
+        
+        
     }
     
     
