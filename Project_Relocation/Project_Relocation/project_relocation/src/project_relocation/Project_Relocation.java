@@ -36,10 +36,17 @@ public static void setScene(Scene x) {
 final static double sceneHeight = 900;
 final static double sceneWidth = 1700;
 
+
 //CREATE NEW MENUS
 static menu1 menu1 = new menu1();
 static menu2 newGameMenu = new menu2();
 static menu3 loadGameMenu = new menu3();
+
+
+//CREATE LEVELS
+static Level_1 level1 = new Level_1();
+static Scene sceneLevel1 = new Scene(level1, sceneWidth,sceneHeight);
+
 
 
 //CREATE NEW SCENES FROM MENUS
