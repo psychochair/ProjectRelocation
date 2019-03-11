@@ -15,9 +15,4 @@ public class Level_1{
     public static BorderPane bp=new BorderPane(testButton);
     public static Scene levelScene=new Scene(bp);
     
-    public static Scene getScene() {
-        return levelScene;
-    }
-    
-    
 }
