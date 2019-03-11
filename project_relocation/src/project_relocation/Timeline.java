@@ -50,7 +50,7 @@ this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;" +
         return orders;
     }
 
-    public void addOrder(Orders order) {
+    public void addOrder(Orders order, double positionX, double positionY) {
       
     } 
     
