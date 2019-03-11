@@ -8,7 +8,7 @@ import javafx.scene.layout.BorderPane;
  *
  * @author chasa
  */
-public class Level_1{
+public class Level_1 extends GameUI{
     
     Level level_1=new Level(1);
     public static Button testButton=new Button("test");    
