@@ -4,7 +4,7 @@ package project_relocation;
  *
  * @author chasa
  */
-public class User implements Rocket {
+public class User {
     
     private String username;
     private String filePath; 
