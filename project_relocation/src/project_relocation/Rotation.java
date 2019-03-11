@@ -7,6 +7,7 @@ package project_relocation;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -18,6 +19,25 @@ public class Rotation extends Orders{
         Label l1 = new Label("Angle");    
     TextField tf1 = new TextField();
     this.getChildren().addAll(l1,tf1);
+    
+    tf1.setOnKeyPressed( e -> {
+         
+         try{
+         if(e.getCode() == KeyCode.ENTER){
+            if(((Double.parseDouble(tf1.getText())) <= 360) && ((Double.parseDouble(tf1.getText())) >= 0)){
+                //COPY TO TIMELINE THE BLOCK
+                //r1.setRate(Double.parseDouble(tf1.getText()));
+         }
+            else{
+                tf1.setText("0 to 360");
+            }
+         }
+         }
+         catch(NumberFormatException ex){
+             tf1.setText("No Result");
+         }
+        });
+
     }
     
     public double getAngle(){
