@@ -12,10 +12,14 @@ import javafx.scene.layout.BorderPane;
  * @author Marc
  */
 public class GameUI extends BorderPane{
-    
-    public GameUI(){
-Timeline timeline = new Timeline();
+static Timeline timeline = new Timeline();
 OrdersList ordersList = new OrdersList();
+
+    public GameUI(){
+
+
+
+
 this.setBottom(timeline);
 this.setLeft(ordersList);
         
@@ -23,4 +27,8 @@ this.setLeft(ordersList);
         
 }
     
+    
+public static void sendOrderToTimeline(Orders order, double positionx, double positiony){
+timeline.addOrder(order, positionx, positiony);
+}
 }
