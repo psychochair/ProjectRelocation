@@ -18,35 +18,42 @@ public class Orders extends VBox {
 
     double mouseX = 0;
     double mouseY = 0;
-    
+
     double dropX = 0;
-    double dropY= 0;
-    
+    double dropY = 0;
+
     double blocXPosition = this.getLayoutX();
     double blocYPosition = this.getLayoutY();
     boolean inTimeline = false;
-    
+
     int positionInTimeline = 0;
-    
-    
+
     public Orders() {
         this.setSpacing(5);
-        this.setStyle("-fx-background-color: #fff;-fx-padding:10;-fx-border-width: 2;"
+
+        this.setStyle("-fx-background-color: #fff;"
                 + "-fx-border-radius: 5;"
-                + "-fx-border-color: black;");
+                + "-fx-border-color: black;" + "-fx-padding:5;-fx-border-width: 2;");
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            
             public void handle(MouseEvent event) {
+                if(!inTimeline){
+                
                 setTranslateX(event.getSceneX() - mouseX);
                 setTranslateY(event.getSceneY() - mouseY);
-                blocXPosition = getLayoutX() + getTranslateX();
-                blocYPosition = getLayoutY() + getTranslateY();
+                
+                }else{
+                setTranslateX(event.getSceneX() - mouseX);
+                setTranslateY(event.getSceneY() - mouseY);
+                }
+
             }
         });
 
         this.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                setMouseXY(event.getX(), event.getSceneY());
+                setMouseXY(event.getSceneX(), event.getSceneY());
             }
         });
 
@@ -58,31 +65,27 @@ public class Orders extends VBox {
                 dropY = yMouseDrop;
                 if (!inTimeline) {
                     //block was not already in the timeline
-                    if (yMouseDrop > Project_Relocation.sceneHeight - 110) {
-                        System.out.println("is dropped in timeline");
+                    if (yMouseDrop > Project_Relocation.sceneHeight - 120) {
 
                         inTimeline = true;
-                        
+
                         //ADD BLOCK TO TIMELINE
                         sendToTimeline();
- 
+
                     } else {
-                        System.out.println("is not dropped timeline");
                         inTimeline = false;
                         setTranslateX(0);
                         setTranslateY(0);
                     }
 
                 } else {
-
-                    System.out.println("WAS ALREADY IN TIMELINE");
+//BLOCK WAS ALREADY IN TIMELINE
                     Timeline.removeOrder(positionInTimeline);
-                    if (yMouseDrop > Project_Relocation.sceneHeight - 110) {
-                        System.out.println("is dropped in timeline");
+                    if (yMouseDrop > Project_Relocation.sceneHeight - 120) {
                         sendToTimeline();
-                        
+                        inTimeline = true;
+
                     } else {
-                        System.out.println("is not dropped timeline");
                         inTimeline = false;
                         setTranslateX(0);
                         setTranslateY(0);
@@ -98,13 +101,16 @@ public class Orders extends VBox {
     }
 
     public void setMouseXY(double x, double y) {
-        this.mouseX = x;
-        this.mouseY = y;
+        this.mouseX = x -getTranslateX();
+        this.mouseY = y - getTranslateY();
     }
-    
-    public void sendToTimeline(){
-    GameUI.sendOrderToTimeline(this, dropY, dropX);
-        
-        
+
+    public void sendToTimeline() {
+        GameUI.sendOrderToTimeline(this, dropY, dropX);
+
+    }
+
+    public void setPositionInTimeline(int x) {
+        positionInTimeline = x;
     }
 }
