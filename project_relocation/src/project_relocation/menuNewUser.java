@@ -50,7 +50,7 @@ public class menuNewUser extends BorderPane implements UI {
         Button confirm=new Button("Confirm");
         Button back=new Button("Back");
         
-        Label errorMessage=new Label("b");
+        Label errorMessage=new Label("");
         
         buttonBox.getChildren().addAll(confirm,back);
         vBox.getChildren().addAll(message,usernameInput,buttonBox,errorMessage);
