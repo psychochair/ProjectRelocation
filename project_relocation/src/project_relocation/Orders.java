@@ -26,6 +26,8 @@ public class Orders extends VBox {
     double blocYPosition = this.getLayoutY();
     boolean inTimeline = false;
     
+    int positionInTimeline = 0;
+    
     
     public Orders() {
         this.setSpacing(5);
@@ -37,7 +39,6 @@ public class Orders extends VBox {
             public void handle(MouseEvent event) {
                 setTranslateX(event.getSceneX() - mouseX);
                 setTranslateY(event.getSceneY() - mouseY);
-                System.out.println(getTranslateX());
                 blocXPosition = getLayoutX() + getTranslateX();
                 blocYPosition = getLayoutY() + getTranslateY();
             }
@@ -45,7 +46,7 @@ public class Orders extends VBox {
 
         this.setOnMousePressed(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent event) {
-                setMouseXY(event.getX(), event.getY());
+                setMouseXY(event.getX(), event.getSceneY());
             }
         });
 
@@ -61,27 +62,10 @@ public class Orders extends VBox {
                         System.out.println("is dropped in timeline");
 
                         inTimeline = true;
-                        sendToTimeline();
                         
-//                        int timelineSize = ordersList.size();
-//                        if (timelineSize == 0) {
-//                            block1.setX((timeline.getWidth() / 2) - 5);
-//                            block1.setY(timeline.getY() + (timeline.getHeight() / 2) - 5);
-//                            block1.setPositionInTimeline(0);
-//                            ordersList.add(block1);
-//
-//                        } else {
-//                            for (int i = 0; i < timelineSize; i++) {
-//                                double timelineX = ordersList.get(i).getXCenter();
-//                                if (xCenter < timelineX) {
-//                                    block1.setPositionInTimeline(i);
-//                                    ordersList.add(i, block1);
-//                                    return;
-//                                }
-//
-//                            }
-//                            ordersList.add(block1);
-//                        }
+                        //ADD BLOCK TO TIMELINE
+                        sendToTimeline();
+ 
                     } else {
                         System.out.println("is not dropped timeline");
                         inTimeline = false;
@@ -92,32 +76,11 @@ public class Orders extends VBox {
                 } else {
 
                     System.out.println("WAS ALREADY IN TIMELINE");
-
-//                ordersList.remove(block1.getPositionInTimeline());
+                    Timeline.removeOrder(positionInTimeline);
                     if (yMouseDrop > Project_Relocation.sceneHeight - 110) {
                         System.out.println("is dropped in timeline");
-
-//                        block1.setInTimeline(true);
-//                        
-//                        int timelineSize = ordersList.size();
-//                        if (timelineSize == 0) {
-//                            block1.setX((timeline.getWidth() / 2) - 5);
-//                            block1.setY(timeline.getY() + (timeline.getHeight() / 2) - 5);
-//                            block1.setPositionInTimeline(0);
-//                            ordersList.add(block1);
-//
-//                        } else {
-//                            for (int i = 0; i < timelineSize; i++) {
-//                                double timelineX = ordersList.get(i).getXCenter();
-//                                if (xCenter < timelineX) {
-//                                    block1.setPositionInTimeline(i);
-//                                    ordersList.add(i, block1);
-//                                    return;
-//                                }
-//
-//                            }
-//                            ordersList.add(block1);
-//                        }
+                        sendToTimeline();
+                        
                     } else {
                         System.out.println("is not dropped timeline");
                         inTimeline = false;
