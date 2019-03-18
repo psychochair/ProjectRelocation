@@ -52,7 +52,7 @@ public class menu1 extends BorderPane implements UI{
         newGameButton.setOnAction(new EventHandler <ActionEvent>(){
             @Override
             public void handle(ActionEvent event) {
-            Project_Relocation.setScene(Project_Relocation.getNewGameMenu());
+            Project_Relocation.setScene(Project_Relocation.getNewUserMenu());
             }
         });
         
