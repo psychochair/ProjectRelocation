@@ -14,9 +14,6 @@ import javafx.scene.shape.Rectangle;
  *
  * @author sandr
  */
-
-
-
 //public Rocket() throws FileNotFoundException{
 //Image img = new Image(new FileInputStream("C:\\Users\\Marc\\Desktop\\rocketProjFinal.png"));
 //this.setFill(new ImagePattern(img));
@@ -27,43 +24,82 @@ import javafx.scene.shape.Rectangle;
 //this.setStroke(Color.BLACK);
 //this.setStrokeWidth(1);
 //}
+public class Timeline extends HBox {
 
+    private static ArrayList<Orders> ordersList = new ArrayList<Orders>();
 
+    public Timeline() {
+        //SET WIDTH AND HEIGHT TIMELINE
+        this.setWidth(Project_Relocation.sceneWidth);
+        this.setMinHeight(90);
+        this.setMaxHeight(90);
 
-public class Timeline extends HBox{
-    
-    private ArrayList<Orders> orders;
-    
-    public Timeline(){
-    this.setWidth(Project_Relocation.sceneWidth);
-    this.setMinHeight(90);
-    this.setMaxHeight(90);
-this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;" +
-                      "-fx-border-radius: 5;" + 
-                      "-fx-border-color: black;");
-    this.setTranslateX(0);
-        
-        
+        //STYLE OF TIMELINE
+        this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;"
+                + "-fx-border-radius: 5;"
+                + "-fx-border-color: black;");
+        this.setTranslateX(0);
+
     }
-    
+
     public ArrayList<Orders> getOrders() {
-        return orders;
+        return ordersList;
     }
 
     public void addOrder(Orders order, double positionX, double positionY) {
-      
-    } 
-    
-    public void modifyOrder(Orders[] orders) {
-      
-    } 
-    
-    public void swapOrder(Orders[] orders) {
-      
-    } 
-    
-    public void removeOrder(Orders[] orders) {
-      
-    } 
-}
+        System.out.println(order.getClass().getName());
 
+        if (ordersList.isEmpty()) {
+            order.setTranslateX((getWidthTimeline() / 2) - order.getWidth() / 2);
+            ordersList.add(order);
+
+        } else {
+
+            int timelineSize = ordersList.size();
+            double blockPositionX = order.getTranslateX();
+            boolean wasAdded = false;
+            for (int i = 0; i < timelineSize; i++) {
+                double timelineX = ordersList.get(i).getTranslateX();
+                if (blockPositionX < timelineX && !wasAdded) {
+                    ordersList.get(i).setTranslateX(timelineX + 55);
+                    order.setTranslateX(timelineX - 110);
+                    ordersList.add(i, order);
+                    order.positionInTimeline = i;
+                    wasAdded = true;
+                } else {
+                    if (wasAdded) {
+                        ordersList.get(i).setTranslateX(timelineX + 55);
+                    } else {
+                        ordersList.get(i).setTranslateX(timelineX - 55);
+                    }
+
+                }
+
+            }
+            if (!wasAdded) {
+                ordersList.add(order);
+
+            }
+
+System.out.println(ordersList.size());
+        }
+    }
+
+    public void modifyOrder(Orders[] orders) {
+
+    }
+
+    public void swapOrder(Orders[] orders) {
+
+    }
+
+    public static void removeOrder(int x) {
+        ordersList.remove(x);
+    }
+
+    public double getWidthTimeline() {
+
+        return this.getWidth();
+    }
+
+}
