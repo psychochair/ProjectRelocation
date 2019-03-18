@@ -15,10 +15,10 @@ public class OrdersList extends VBox{
     
     public OrdersList(){
     this.setSpacing(5);
-    this.setMaxWidth(110);
-    this.setMinWidth(110);
-    this.setMinHeight(Project_Relocation.sceneHeight - 90);
-    this.setMaxHeight(Project_Relocation.sceneHeight - 90);
+    this.setMaxWidth(120);
+    this.setMinWidth(120);
+    this.setMinHeight(Project_Relocation.sceneHeight - 120);
+    this.setMaxHeight(Project_Relocation.sceneHeight - 120);
 this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;" +
                       "-fx-border-radius: 5;" + 
                       "-fx-border-color: black;");
