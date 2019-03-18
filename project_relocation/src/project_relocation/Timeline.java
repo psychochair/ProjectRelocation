@@ -31,8 +31,8 @@ public class Timeline extends HBox {
     public Timeline() {
         //SET WIDTH AND HEIGHT TIMELINE
         this.setWidth(Project_Relocation.sceneWidth);
-        this.setMinHeight(90);
-        this.setMaxHeight(90);
+        this.setMinHeight(120);
+        this.setMaxHeight(120);
 
         //STYLE OF TIMELINE
         this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;"
@@ -50,39 +50,44 @@ public class Timeline extends HBox {
         System.out.println(order.getClass().getName());
 
         if (ordersList.isEmpty()) {
-            order.setTranslateX((getWidthTimeline() / 2) - order.getWidth() / 2);
+            order.setTranslateX(2);
+            order.setTranslateY(0 -order.getLayoutY()+Project_Relocation.sceneHeight-120+(60 - order.getHeight()/2));
             ordersList.add(order);
 
         } else {
 
             int timelineSize = ordersList.size();
             double blockPositionX = order.getTranslateX();
-            boolean wasAdded = false;
+            boolean isAlreadyAdded = false;
             for (int i = 0; i < timelineSize; i++) {
                 double timelineX = ordersList.get(i).getTranslateX();
-                if (blockPositionX < timelineX && !wasAdded) {
-                    ordersList.get(i).setTranslateX(timelineX + 55);
-                    order.setTranslateX(timelineX - 110);
+                if (blockPositionX < timelineX && !isAlreadyAdded) {
+                    ordersList.get(i).setTranslateX(timelineX + 120);
+                    order.setTranslateX(timelineX);
                     ordersList.add(i, order);
                     order.positionInTimeline = i;
-                    wasAdded = true;
+                    isAlreadyAdded = true;
+                    order.setTranslateY(-order.getLayoutY()+Project_Relocation.sceneHeight-60-(order.getHeight()/2));
                 } else {
-                    if (wasAdded) {
-                        ordersList.get(i).setTranslateX(timelineX + 55);
-                    } else {
-                        ordersList.get(i).setTranslateX(timelineX - 55);
+                    if (isAlreadyAdded) {
+                        ordersList.get(i).setTranslateX(timelineX + 120);
+                        ordersList.get(i).setPositionInTimeline(i);
+                        
                     }
 
                 }
 
             }
-            if (!wasAdded) {
+            if (!isAlreadyAdded) {
+                order.setTranslateY(-order.getLayoutY()+Project_Relocation.sceneHeight-60-(order.getHeight()/2));      
+                order.setTranslateX(ordersList.get(ordersList.size()-1).getTranslateX()+120);
                 ordersList.add(order);
-
+                order.positionInTimeline = ordersList.size()-1;
             }
 
-System.out.println(ordersList.size());
+
         }
+        System.out.println(ordersList.size());
     }
 
     public void modifyOrder(Orders[] orders) {
@@ -95,6 +100,24 @@ System.out.println(ordersList.size());
 
     public static void removeOrder(int x) {
         ordersList.remove(x);
+        if(x!=ordersList.size()){
+        boolean reachedX = false;
+                    for (int i = 0; i < ordersList.size(); i++) {
+                        
+                        
+                        ordersList.get(i).setPositionInTimeline(i);
+                        
+                        if(i==x){
+                        reachedX = true;
+                        }
+                        if(reachedX){
+                        ordersList.get(i).setTranslateX(ordersList.get(i).getTranslateX()-120);
+                        }
+                
+
+                }
+        }
+                    
     }
 
     public double getWidthTimeline() {
