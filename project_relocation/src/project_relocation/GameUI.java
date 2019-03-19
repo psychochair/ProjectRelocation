@@ -26,8 +26,7 @@ this.setLeft(ordersList);
         
         
 }
-    
-    
+
 public static void sendOrderToTimeline(Orders order, double positionx, double positiony){
 timeline.addOrder(order, positionx, positiony);
 }
