@@ -5,16 +5,20 @@
  */
 package project_relocation;
 
+import java.util.ArrayList;
+import javafx.event.EventHandler;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
  *
  * @author Marc
  */
-public class OrdersList extends VBox{
+public class OrdersList extends GridPane{
     
+
     public OrdersList(){
-    this.setSpacing(5);
     this.setMaxWidth(120);
     this.setMinWidth(120);
     this.setMinHeight(Project_Relocation.sceneHeight - 120);
@@ -30,9 +34,22 @@ Acceleration AccBlock = new Acceleration();
 Wait WaitBlock = new Wait();
 Rotation RotBlock = new Rotation();
 
-this.getChildren().addAll(AccBlock, RotBlock, WaitBlock);
+
+this.add(AccBlock,0,0);
+add(WaitBlock,0,1);
+add(RotBlock,0,2);
+
+
+
+
+
     }
     
     
-    
+    public void newBlock(Orders x, int row){
+    add(x,0,row);
+    }
+    public void deleteOrder(Orders x){
+    this.getChildren().remove(x);
+    }
 }
