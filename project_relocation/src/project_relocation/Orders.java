@@ -88,9 +88,7 @@ public class Orders extends VBox {
 
                     } else {
                         inTimeline = false;
-                        setTranslateX(0);
-                        setTranslateY(0);
-
+deleteThisBlock();
                     }
 
                 }
@@ -127,5 +125,9 @@ public class Orders extends VBox {
 
     public void setPositionInTimeline(int x) {
         positionInTimeline = x;
+    }
+    
+    public void deleteThisBlock(){
+    ((OrdersList)getParent()).deleteOrder(this);
     }
 }
