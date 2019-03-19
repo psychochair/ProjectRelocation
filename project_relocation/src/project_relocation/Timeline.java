@@ -46,7 +46,17 @@ public class Timeline extends HBox {
         return ordersList;
     }
 
-    public void addOrder(Orders order, double positionX, double positionY) {
+    public void addOrder(Orders order, double positionX, double positionY) {        
+        
+        if(order.getClass().getName() == "project_relocation.Acceleration"){
+        
+        }else if(order.getClass().getName() == "project_relocation.Wait"){
+        
+        }else if(order.getClass().getName() == "project_relocation.Rotation"){
+        
+        }
+        
+        
         System.out.println(order.getClass().getName());
 
         if (ordersList.isEmpty()) {
