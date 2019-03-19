@@ -66,7 +66,8 @@ public class Orders extends VBox {
                 if (!inTimeline) {
                     //block was not already in the timeline
                     if (yMouseDrop > Project_Relocation.sceneHeight - 120) {
-
+                    newBlocTordersList();
+                        
                         inTimeline = true;
 
                         //ADD BLOCK TO TIMELINE
@@ -100,6 +101,20 @@ public class Orders extends VBox {
 
     }
 
+    
+    public void newBlocTordersList(){
+                            
+
+                        switch(this.getClass().getName()){
+                            case "project_relocation.Acceleration": ((OrdersList)getParent()).newBlock(new Acceleration(),0);
+                            break;
+                            case "project_relocation.Wait": ((OrdersList)getParent()).newBlock(new Wait(),1);
+                            break;
+                            case "project_relocation.Rotation": ((OrdersList)getParent()).newBlock(new Rotation(),2);
+                            break;
+                        }
+                        
+    }
     public void setMouseXY(double x, double y) {
         this.mouseX = x -getTranslateX();
         this.mouseY = y - getTranslateY();
