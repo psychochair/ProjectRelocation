@@ -40,7 +40,7 @@ final static double sceneWidth = 1700;
 //CREATE NEW MENUS
 static menu1 menu1 = new menu1();
 static menu2 newGameMenu = new menu2();
-static menu3 loadGameMenu = new menu3();
+static menuLoadUser loadUserMenu = new menuLoadUser();
 static menuNewUser newUserMenu=new menuNewUser();
 
 
@@ -54,7 +54,7 @@ static Scene sceneLevel1 = new Scene(level1, sceneWidth,sceneHeight);
 static Scene sceneMenu1 = new Scene(menu1, sceneWidth,sceneHeight);
 static Scene sceneNewGameMenu = new Scene(newGameMenu, sceneWidth,sceneHeight);
 static Scene sceneNewUserMenu= new Scene(newUserMenu, sceneWidth,sceneHeight);
-static Scene sceneLoadGameMenu = new Scene(loadGameMenu, sceneWidth,sceneHeight);
+static Scene sceneLoadUserMenu = new Scene(loadUserMenu, sceneWidth,sceneHeight);
 
 //METHOD TO RETURN THE MENUS
 public static Scene getMenu1(){
@@ -67,7 +67,7 @@ public static Scene getNewUserMenu(){
     return sceneNewUserMenu;
 }
 public static Scene getLoadGameMenu(){
-return sceneLoadGameMenu;
+return sceneLoadUserMenu;
 }
 
     public void start(Stage primaryStage) throws Exception {
