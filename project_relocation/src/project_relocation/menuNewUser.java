@@ -106,7 +106,7 @@ public class menuNewUser extends BorderPane implements UI {
                 boolean invalidName=false;
                 boolean invalidChar=false;
                 boolean emptyName=false;
-                if (    (username.contains("."))||(username.contains("\\"))  ){
+                if (    (username.contains("."))||(username.contains("\\"))||(username.contains("\t"))||(username.contains("\n"))  ){
                     invalidChar=true;
                 }
                 if(username==null){
@@ -122,7 +122,7 @@ public class menuNewUser extends BorderPane implements UI {
                 }
     //if name already exists
                 if(invalidChar==true){
-                    errorMessage.setText("\""+username+"\""+" is invalid, remove \nnon alpha numerical characters in your username");                    
+                    errorMessage.setText("\""+username+"\""+" is invalid, remove \nnon alpha numerical characters in your username\nalso, try removing any spaces!");                    
                 }
                 if(emptyName==true){
                     errorMessage.setText("Write your username first!");
