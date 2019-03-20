@@ -32,6 +32,7 @@ import javafx.scene.layout.VBox;
  * @author chasa
  */
 public class menuNewUser extends BorderPane implements UI {
+    
     public menuNewUser(){
         
 //Creating UserNameFile
@@ -133,15 +134,24 @@ public class menuNewUser extends BorderPane implements UI {
                     try {
                         Files.write(Paths.get("resources/usernames.txt"), fileUsername.getBytes(), StandardOpenOption.APPEND);
     //Creating new UserFile
-                        File usernameFile = new File("resources/usernames/"+username+".txt");
-                        usernameFile.createNewFile();
+                        File userFile = new File("resources/usernames/"+username+".txt");
+                        userFile.createNewFile();
+                        PrintWriter writer = new PrintWriter("resources/usernames/"+username+".txt");
+                        writer.println("0\n0\n0\n0\n0");
+                        writer.close();
+                        
                         
                         userCreated=true;
                     } catch (IOException ex) {
                         Logger.getLogger(menuNewUser.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                if(userCreated){                
+                if(userCreated){            
+                    try {
+                        User user=new User(username);
+                    } catch (IOException ex) {
+                        Logger.getLogger(menuNewUser.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     Project_Relocation.setScene(Project_Relocation.getNewGameMenu());
                 }
             }
@@ -153,14 +163,5 @@ public class menuNewUser extends BorderPane implements UI {
                 Project_Relocation.setScene(Project_Relocation.getMenu1());
             }
         });
-        
-        
-        
-        
-        
-        
-        
-   
-        
     }
 }
