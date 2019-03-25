@@ -31,8 +31,18 @@ public class User {
     
     private File userFile=new File("resources/usernames/"+username+".txt");    
     
-    public User(String u) throws FileNotFoundException, IOException{
-        username=u;
+    public User(){
+        username="default";
+        filePath="";
+        levelsCompleted=0;
+        stars=0;
+        fuelCapacity=0;
+        protection=0;
+        engineType=0;
+    }
+    
+    public void actualizeFile() throws FileNotFoundException, IOException{
+        
         filePath="resources/usernames/"+username+".txt";
         File userFile=new File(filePath);
         Scanner reader = new Scanner(userFile);
@@ -42,25 +52,8 @@ public class User {
         int protection = reader.nextInt();
         int engineType = reader.nextInt();
         
-        System.out.println(levelsCompleted+"\n"+stars+"\n"+fuelCapacity+"\n"+protection+"\n"+engineType);
-        
-        
-        
+        System.out.println(levelsCompleted+"\n"+stars+"\n"+fuelCapacity+"\n"+protection+"\n"+engineType);        
     }
-    
-    public String getUsername() {
-        return username;
-    }
-    
-    public String getFilePath() {
-        return filePath;
-    }
-
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
-    
-    
     
     public void writeFile() throws FileNotFoundException, IOException{
         
@@ -72,6 +65,22 @@ public class User {
         writer.println(levelsCompleted+"\n"+stars+"\n"+fuelCapacity+"\n"+protection+"\n"+engineType);
         writer.close();
         
+    }
+    
+    
+    
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username=username;
+    }
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
     
     public int getLevelsCompleted() throws IOException {
