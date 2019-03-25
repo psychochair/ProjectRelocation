@@ -74,6 +74,8 @@ return sceneLoadUserMenu;
         mainStage = primaryStage;
         
         //scene.
+        primaryStage.minHeightProperty().bind(primaryStage.widthProperty().multiply(0.5));
+        primaryStage.maxHeightProperty().bind(primaryStage.widthProperty().multiply(0.5));
         primaryStage.setTitle("Project_Relocation");
         primaryStage.setScene(sceneMenu1);
         primaryStage.show();
