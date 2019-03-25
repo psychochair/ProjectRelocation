@@ -8,6 +8,7 @@ package project_relocation;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.VBox;
 
 /**
@@ -28,7 +29,17 @@ public class Orders extends VBox {
 
     int positionInTimeline = 0;
 
+ 
+    
     public Orders() {
+        
+        this.setOnScroll(new EventHandler<ScrollEvent>() {
+        @Override
+        public void handle(ScrollEvent event) {
+            ((OrdersList) getParent()).scrollBlocs(event.getDeltaX());
+        }
+    });
+        
         this.setSpacing(5);
 
         this.setStyle("-fx-background-color: #fff;"
@@ -36,16 +47,16 @@ public class Orders extends VBox {
                 + "-fx-border-color: black;" + "-fx-padding:5;-fx-border-width: 2;");
 
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            
+
             public void handle(MouseEvent event) {
-                if(!inTimeline){
-                
-                setTranslateX(event.getSceneX() - mouseX);
-                setTranslateY(event.getSceneY() - mouseY);
-                
-                }else{
-                setTranslateX(event.getSceneX() - mouseX);
-                setTranslateY(event.getSceneY() - mouseY);
+                if (!inTimeline) {
+
+                    setTranslateX(event.getSceneX() - mouseX);
+                    setTranslateY(event.getSceneY() - mouseY);
+
+                } else {
+                    setTranslateX(event.getSceneX() - mouseX);
+                    setTranslateY(event.getSceneY() - mouseY);
                 }
 
             }
@@ -66,8 +77,8 @@ public class Orders extends VBox {
                 if (!inTimeline) {
                     //block was not already in the timeline
                     if (yMouseDrop > Project_Relocation.sceneHeight - 120) {
-                    newBlocTordersList();
-                        
+                        newBlocTordersList();
+
                         inTimeline = true;
 
                         //ADD BLOCK TO TIMELINE
@@ -88,7 +99,7 @@ public class Orders extends VBox {
 
                     } else {
                         inTimeline = false;
-deleteThisBlock();
+                        deleteThisBlock();
                     }
 
                 }
@@ -100,34 +111,38 @@ deleteThisBlock();
     }
 
     
-    public void newBlocTordersList(){
-                            
+    
+    public void newBlocTordersList() {
 
-                        switch(this.getClass().getName()){
-                            case "project_relocation.Acceleration": ((OrdersList)getParent()).newBlock(new Acceleration(),0);
-                            break;
-                            case "project_relocation.Wait": ((OrdersList)getParent()).newBlock(new Wait(),1);
-                            break;
-                            case "project_relocation.Rotation": ((OrdersList)getParent()).newBlock(new Rotation(),2);
-                            break;
-                        }
-                        
+        switch (this.getClass().getName()) {
+            case "project_relocation.Acceleration":
+                ((OrdersList) getParent()).newBlock(new Acceleration(), 0);
+                break;
+            case "project_relocation.Wait":
+                ((OrdersList) getParent()).newBlock(new Wait(), 1);
+                break;
+            case "project_relocation.Rotation":
+                ((OrdersList) getParent()).newBlock(new Rotation(), 2);
+                break;
+        }
+
     }
+
     public void setMouseXY(double x, double y) {
-        this.mouseX = x -getTranslateX();
+        this.mouseX = x - getTranslateX();
         this.mouseY = y - getTranslateY();
     }
 
     public void sendToTimeline() {
-        GameUI.sendOrderToTimeline(this, dropY, dropX);
+        ((OrdersList) getParent()).sendOrderToTimeline(this, dropY, dropX);
 
     }
 
     public void setPositionInTimeline(int x) {
         positionInTimeline = x;
     }
-    
-    public void deleteThisBlock(){
-    ((OrdersList)getParent()).deleteOrder(this);
+
+    public void deleteThisBlock() {
+        ((OrdersList) getParent()).deleteOrder(this);
     }
 }
