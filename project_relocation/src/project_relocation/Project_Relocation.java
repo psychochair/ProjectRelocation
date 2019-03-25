@@ -40,7 +40,7 @@ final static double sceneWidth = 1300;
 //CREATE NEW MENUS
 static menu1 menu1 = new menu1();
 static menu2 newGameMenu = new menu2();
-static menu3 loadGameMenu = new menu3();
+static menuNewUser loadGameMenu = new menuNewUser();
 static menuSelection selectionMenu = new menuSelection();
 
 
