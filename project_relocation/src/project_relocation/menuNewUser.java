@@ -33,7 +33,7 @@ import javafx.scene.layout.VBox;
  */
 public class menuNewUser extends BorderPane implements UI {
     
-    public menuNewUser(){
+    public menuNewUser(User user){
         
 //Creating UserNameFile
         File usernameFile = new File("resources/usernames.txt");
@@ -147,11 +147,8 @@ public class menuNewUser extends BorderPane implements UI {
                     }
                 }
                 if(userCreated){            
-                    try {
-                        User user=new User(username);
-                    } catch (IOException ex) {
-                        Logger.getLogger(menuNewUser.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    user.setUsername(username);
+                    user.setFilePath("resources/usernames/"+username+".txt");
                     Project_Relocation.setScene(Project_Relocation.getNewGameMenu());
                 }
             }
