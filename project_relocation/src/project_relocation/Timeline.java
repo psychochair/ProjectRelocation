@@ -6,6 +6,10 @@
 package project_relocation;
 
 import java.util.ArrayList;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
@@ -53,7 +57,16 @@ public class Timeline extends Pane {
         
         Circle playButton = new Circle(50,50,50, Color.RED);
         playAroundButton.getChildren().addAll(playButton, triangle);
-        playAroundButton.setTranslateZ(300);
+        playAroundButton.toFront();
+        
+        playAroundButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent event) {
+            }
+    
+    
+    });
+        
         
         
         
@@ -65,6 +78,8 @@ public class Timeline extends Pane {
         this.setWidth(Project_Relocation.sceneWidth);
         this.setMinHeight(120);
         this.setMaxHeight(120);
+        this.setLayoutX(0);
+        this.setLayoutY(Project_Relocation.sceneHeight - 120);
 
         //STYLE OF TIMELINE
         this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;"
@@ -179,7 +194,7 @@ public class Timeline extends Pane {
 
         return this.getWidth();
     }
-    
+   
     
     
 
