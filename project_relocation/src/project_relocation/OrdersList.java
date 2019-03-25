@@ -22,12 +22,12 @@ public class OrdersList extends GridPane{
     this.setMaxWidth(120);
     this.setMinWidth(120);
     this.setMinHeight(Project_Relocation.sceneHeight - 120);
-    this.setMaxHeight(Project_Relocation.sceneHeight - 120);
 this.setStyle("-fx-background-color: #fff;-fx-border-width: 2;" +
                       "-fx-border-radius: 5;" + 
                       "-fx-border-color: black;");
 
-this.setTranslateX(0);
+this.setLayoutX(0);
+this.setLayoutY(0);
 
 //CREATE THE 3 BLOCKS
 Acceleration AccBlock = new Acceleration();
