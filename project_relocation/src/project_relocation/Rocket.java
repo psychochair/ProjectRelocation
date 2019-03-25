@@ -24,6 +24,14 @@ public class Rocket extends Ellipse {
     private double time;
     private double acceleration= 0;
     
+    public Rocket(){
+    
+    
+    }
+    
+    
+    
+    
     public Rocket(double life, double fuel, int fuelC, int protection, int engineT ){
         this.life= life;
         this.fuel= fuel;
