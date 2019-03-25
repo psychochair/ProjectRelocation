@@ -7,7 +7,10 @@ package project_relocation;
 
 import java.util.ArrayList;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -24,11 +27,40 @@ import javafx.scene.shape.Rectangle;
 //this.setStroke(Color.BLACK);
 //this.setStrokeWidth(1);
 //}
-public class Timeline extends HBox {
-
+public class Timeline extends Pane {
+    
+    
     private static ArrayList<Orders> ordersList = new ArrayList<Orders>();
 
     public Timeline() {
+        
+        Pane playAroundButton = new Pane();
+        playAroundButton.setStyle("-fx-background-color: #fff;"
+                + "-fx-border-radius: 5;");
+        playAroundButton.setMinWidth(100);
+        playAroundButton.setMaxWidth(100);
+        playAroundButton.setMinHeight(100);
+        playAroundButton.setMaxHeight(100);
+        playAroundButton.setLayoutX(Project_Relocation.sceneWidth - 110);
+        playAroundButton.setLayoutY(10);
+        Polygon triangle = new Polygon();
+        triangle.getPoints().setAll(new Double[]{
+        30.0,20.0
+        ,30.0,80.0
+        ,80.0,50.0}
+        );
+        triangle.setFill(Color.WHITE);
+        
+        Circle playButton = new Circle(50,50,50, Color.RED);
+        playAroundButton.getChildren().addAll(playButton, triangle);
+        playAroundButton.setTranslateZ(300);
+        
+        
+        
+        
+        
+        this.getChildren().add(playAroundButton);
+        
         //SET WIDTH AND HEIGHT TIMELINE
         this.setWidth(Project_Relocation.sceneWidth);
         this.setMinHeight(120);
@@ -39,42 +71,51 @@ public class Timeline extends HBox {
                 + "-fx-border-radius: 5;"
                 + "-fx-border-color: black;");
         this.setTranslateX(0);
+        
+        
 
     }
+    
+    public void scrollBlocs(double xvalue){
+        if(!ordersList.isEmpty()){
+                if(ordersList.get(0).getTranslateX()+xvalue<=2){
+     for(int i=0;i<ordersList.size();i++){
+    ordersList.get(i).setTranslateX(ordersList.get(i).getTranslateX()+xvalue);
+    
+    
+    }
+        }
+        
+        }
+
+
+    
+    }
+    
 
     public ArrayList<Orders> getOrders() {
         return ordersList;
     }
 
     public void addOrder(Orders order, double positionX, double positionY) {        
-        
-        if(order.getClass().getName() == "project_relocation.Acceleration"){
-        
-        }else if(order.getClass().getName() == "project_relocation.Wait"){
-        
-        }else if(order.getClass().getName() == "project_relocation.Rotation"){
-        
-        }
-        
-        
-        System.out.println(order.getClass().getName());
 
         if (ordersList.isEmpty()) {
             order.setTranslateX(2);
             order.setTranslateY(0 -order.getLayoutY()+Project_Relocation.sceneHeight-120+(60 - order.getHeight()/2));
             ordersList.add(order);
+            
 
         } else {
 
-            int timelineSize = ordersList.size();
             double blockPositionX = order.getTranslateX();
             boolean isAlreadyAdded = false;
-            for (int i = 0; i < timelineSize; i++) {
+            for (int i = 0; i < ordersList.size(); i++) {
                 double timelineX = ordersList.get(i).getTranslateX();
                 if (blockPositionX < timelineX && !isAlreadyAdded) {
-                    ordersList.get(i).setTranslateX(timelineX + 120);
+                    ordersList.get(i).setTranslateX(timelineX);
                     order.setTranslateX(timelineX);
                     ordersList.add(i, order);
+                    ordersList.get(i).setPositionInTimeline(i+1);
                     order.positionInTimeline = i;
                     isAlreadyAdded = true;
                     order.setTranslateY(-order.getLayoutY()+Project_Relocation.sceneHeight-60-(order.getHeight()/2));
@@ -97,7 +138,7 @@ public class Timeline extends HBox {
 
 
         }
-        System.out.println(ordersList.size());
+        System.out.println("SIZE AFTER DROPPED = "+ordersList.size());
     }
 
     public void modifyOrder(Orders[] orders) {
@@ -127,6 +168,10 @@ public class Timeline extends HBox {
 
                 }
         }
+        
+        
+        System.out.println("Size after removed = "+ordersList.size());
+        
                     
     }
 
@@ -134,5 +179,8 @@ public class Timeline extends HBox {
 
         return this.getWidth();
     }
+    
+    
+    
 
 }
