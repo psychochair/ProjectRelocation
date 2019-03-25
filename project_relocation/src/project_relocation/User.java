@@ -18,6 +18,7 @@ import java.util.Scanner;
  * @author chasa
  */
 
+//YOOOO FAUT TROUVER COMMENT EXTEND ROCKET
 public class User {
     
     private String username;
