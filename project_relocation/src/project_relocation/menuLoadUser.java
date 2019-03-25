@@ -44,52 +44,69 @@ import javax.swing.JComboBox;
  */
 public class menuLoadUser extends BorderPane implements UI {
     
-    public menuLoadUser() throws FileNotFoundException, IOException{
-//Creating interface
-        GridPane mainPane = new GridPane();
-        mainPane.setAlignment(Pos.CENTER);
-        VBox vBox=new VBox(10);
-        HBox buttonBox=new HBox(10);
-        
-        Label message=new Label("Search for your username, the press enter");
-        
-//storing every username into an array for combobox       
-        BufferedReader in = new BufferedReader(new FileReader("resources/usernames.txt"));
-        String str;
-        List<String> list = new ArrayList<String>();
-        while((str = in.readLine()) != null){
-            list.add(str);
-        }
-
-        String[] stringArr = list.toArray(new String[0]);
-        
-        
-        ObservableList<String> options = FXCollections.observableArrayList(list);
-        final ComboBox comboBox = new ComboBox(options);
-        
-        
-        Button confirm=new Button("Confirm");
-        Button back=new Button("Back");
-        
-        Label errorMessage=new Label("");
-        
-        buttonBox.getChildren().addAll(confirm,back);
-        vBox.getChildren().addAll(message,comboBox,buttonBox,errorMessage);
-        
-        mainPane.getChildren().addAll(vBox);
-        
-        this.setCenter(mainPane);
-        
-        
-        
-//button actions
-    //back button
-        back.setOnAction(new EventHandler <ActionEvent>(){
-            @Override
-            public void handle(ActionEvent event) {
-                Project_Relocation.setScene(Project_Relocation.getMenu1());
+    public menuLoadUser(User user) {
+        BufferedReader in = null;
+        try {
+            //Creating interface
+            GridPane mainPane = new GridPane();
+            mainPane.setAlignment(Pos.CENTER);
+            VBox vBox=new VBox(10);
+            HBox buttonBox=new HBox(10);
+            Label message=new Label("Search for your username, the press enter");
+//storing every username into an array for combobox
+            in = new BufferedReader(new FileReader("resources/usernames.txt"));
+            String str;
+            List<String> list = new ArrayList<String>();
+            while((str = in.readLine()) != null){
+                list.add(str);
+            }   String[] stringArr = list.toArray(new String[0]);
+            ObservableList<String> options = FXCollections.observableArrayList(list);
+            final ComboBox comboBox = new ComboBox(options);
+            Button confirm=new Button("Confirm");
+            Button back=new Button("Back");
+            Label errorMessage=new Label("");
+            buttonBox.getChildren().addAll(confirm,back);
+            vBox.getChildren().addAll(message,comboBox,buttonBox,errorMessage);
+            mainPane.getChildren().addAll(vBox);
+            this.setCenter(mainPane);
+            //button actions
+            //back button
+            back.setOnAction(new EventHandler <ActionEvent>(){
+                @Override
+                public void handle(ActionEvent event) {
+                    Project_Relocation.setScene(Project_Relocation.getMenu1());
+                }
+            }); 
+//confirm button
+            confirm.setOnAction(new EventHandler <ActionEvent>(){
+                @Override
+                public void handle(ActionEvent event) {
+                    if(comboBox.getSelectionModel().isEmpty()){
+                        errorMessage.setText("Pick a username from the list first!");
+                    }else{
+                        ObservableList userList=comboBox.getItems();
+                        String username=(String)comboBox.getValue();
+                        System.out.println(username);
+                        user.setUsername(username);
+                        try {
+                            user.actualizeFile();
+                        } catch (IOException ex) {
+                            Logger.getLogger(menuLoadUser.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
+            });
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(menuLoadUser.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(menuLoadUser.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                in.close();
+            } catch (IOException ex) {
+                Logger.getLogger(menuLoadUser.class.getName()).log(Level.SEVERE, null, ex);
             }
-        });
+        }        
         
     }
     
