@@ -23,6 +23,8 @@ import javafx.stage.Stage;
  */
 public class Project_Relocation extends Application{
 
+//Creating default user
+    public static User user=new User();
    
 private static Stage mainStage;
 
