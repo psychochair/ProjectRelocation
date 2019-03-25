@@ -16,7 +16,7 @@ import javafx.scene.layout.VBox;
  * @author Marc
  */
 public class OrdersList extends GridPane{
-    
+   
 
     public OrdersList(){
     this.setMaxWidth(120);
@@ -38,7 +38,7 @@ Rotation RotBlock = new Rotation();
 this.add(AccBlock,0,0);
 add(WaitBlock,0,1);
 add(RotBlock,0,2);
-
+AccBlock.toBack();
 
 
 
@@ -51,5 +51,16 @@ add(RotBlock,0,2);
     }
     public void deleteOrder(Orders x){
     this.getChildren().remove(x);
+    }
+    
+    
+    public void scrollBlocs(double xvalue){
+        
+    ((GameUI) getParent()).scrollBlocs(xvalue);
+    }
+    
+    public void sendOrderToTimeline(Orders order, double x, double y){
+    ((GameUI) getParent()).sendOrderToTimeline(order, x, y);
+    
     }
 }
