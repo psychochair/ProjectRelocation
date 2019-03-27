@@ -23,11 +23,22 @@ public class menu2 extends BorderPane implements UI{
     public menu2(){
   
         
-      
         ImageView imageViewPageIntro = new ImageView();
-//      Image imageBobTalking = new Image("");
-//      imageViewPageIntro.setImage(imageBobTalking);
+        Image imageBobTalking = new Image("astronautPNG.png");
+        imageViewPageIntro.setPreserveRatio(true);
+        imageViewPageIntro.setFitHeight(heightImage);
+        imageViewPageIntro.setFitWidth(widthImage);
+        imageViewPageIntro.setImage(imageBobTalking);
         this.setCenter(imageViewPageIntro);
+        
+        TextField bobMessage = new TextField();
+        bobMessage.setText("Hi, will you help Bob on his mission");
+     //   Hbox 
+        bobMessage.setAlignment(Pos.CENTER);
+        bobMessage.setLayoutX(widthImage);
+        bobMessage.setLayoutY(heightImage);
+        bobMessage.setEditable(false);
+        this.setLeft(bobMessage);
         
         
         //GRID PANE FOR BUTTONS CHOICE
