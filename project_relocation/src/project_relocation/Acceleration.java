@@ -15,8 +15,8 @@ import javafx.scene.input.KeyCode;
  */
 public class Acceleration extends Orders{
   
-    private double accelerationValue = 0;
-    private double durationAcceleration = 0;
+    private double accelerationValue = 80;
+    private double durationAcceleration = 2;
 
     public Acceleration(){
     Label l1 = new Label("Acceleration (m/s)");    
