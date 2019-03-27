@@ -1,10 +1,11 @@
-/*
+  /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package project_relocation;
 
+import java.util.ArrayList;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.input.ScrollEvent;
@@ -16,7 +17,7 @@ import javafx.scene.layout.Pane;
  * @author Marc
  */
 public class GameUI extends Pane{
-Timeline timeline = new Timeline();
+TimelineOrders timeline = new TimelineOrders();
 OrdersList ordersList = new OrdersList();
 
     public GameUI(){
@@ -42,5 +43,5 @@ public void scrollBlocs(double xvalue){
 timeline.scrollBlocs(xvalue);
 
 }
-
+public void readOrders(ArrayList<Orders> x){}
 }
