@@ -49,6 +49,7 @@ public class Orders extends VBox {
         this.setOnMouseDragged(new EventHandler<MouseEvent>() {
 
             public void handle(MouseEvent event) {
+                System.out.print("dnsndusj");
                 if (!inTimeline) {
 
                     setTranslateX(event.getSceneX() - mouseX);
@@ -92,7 +93,7 @@ public class Orders extends VBox {
 
                 } else {
 //BLOCK WAS ALREADY IN TIMELINE
-                    Timeline.removeOrder(positionInTimeline);
+                    TimelineOrders.removeOrder(positionInTimeline);
                     if (yMouseDrop > Project_Relocation.sceneHeight - 120) {
                         sendToTimeline();
                         inTimeline = true;
