@@ -21,23 +21,13 @@ import javafx.scene.shape.Rectangle;
  *
  * @author sandr
  */
-//public Rocket() throws FileNotFoundException{
-//Image img = new Image(new FileInputStream("C:\\Users\\Marc\\Desktop\\rocketProjFinal.png"));
-//this.setFill(new ImagePattern(img));
-//this.setRadiusX(100);
-//this.setRadiusY(100);
-//this.setCenterX(100);
-//this.setCenterY(100);
-//this.setStroke(Color.BLACK);
-//this.setStrokeWidth(1);
-//}
-public class Timeline extends Pane {
+public class TimelineOrders extends Pane {
     
     
     private static ArrayList<Orders> ordersList = new ArrayList<Orders>();
 
-    public Timeline() {
-        
+    public TimelineOrders() {
+        this.toFront();
         Pane playAroundButton = new Pane();
         playAroundButton.setStyle("-fx-background-color: #fff;"
                 + "-fx-border-radius: 5;");
@@ -62,6 +52,9 @@ public class Timeline extends Pane {
         playAroundButton.setOnMouseClicked(new EventHandler<MouseEvent>(){
             @Override
             public void handle(MouseEvent event) {
+                
+                ((GameUI)(getParent())).readOrders(ordersList);
+               
             }
     
     
