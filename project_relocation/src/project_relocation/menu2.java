@@ -49,7 +49,12 @@ public class menu2 extends BorderPane implements UI{
             Project_Relocation.setScene(Project_Relocation.sceneLevel1);
             }
         });
-        
+        buttonNoIntro.setOnAction(new EventHandler <ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+            Project_Relocation.setScene(Project_Relocation.sceneSelectionMenu);
+            }
+        });
         
     }
     
