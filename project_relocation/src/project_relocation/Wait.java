@@ -15,7 +15,7 @@ import javafx.scene.input.KeyCode;
  */
 public class Wait extends Orders{
     
-    private double duration = 0;
+    private double duration = 2;
     
     
     public Wait(){
