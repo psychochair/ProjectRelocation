@@ -9,9 +9,13 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+
 
 /**
  *
@@ -19,6 +23,8 @@ import javafx.scene.layout.GridPane;
  */
 public class menu2 extends BorderPane implements UI{
     
+    double heightImage =500;
+    double widthImage =500;
     
     public menu2(){
   
