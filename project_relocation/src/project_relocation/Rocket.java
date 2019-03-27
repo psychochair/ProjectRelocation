@@ -20,7 +20,7 @@ public class Rocket extends Ellipse {
     private int engineType;
     private double posX= 0;
     private double posY= 0;
-    private double angle= 0;
+    private double angle= 90;
     private double time;
     private double acceleration= 0;
     
