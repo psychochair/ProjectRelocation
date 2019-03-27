@@ -1,5 +1,6 @@
 package project_relocation;
 
+import java.util.ArrayList;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -9,18 +10,19 @@ import javafx.scene.text.Text;
  * @author chasa
  */
 public class Level_01 extends GameUI{
-    
+        Level levelUI=new Level();
     public Level_01(){
-    
-    Pane pane= new Pane();
 
-    Level level_1=new Level();
+
+
     
-    pane.getChildren().add(level_1);
-    
-   this.getChildren().addAll(pane);
+    this.getChildren().add(levelUI);
     
     }
-    
-    
+public void readOrders(ArrayList<Orders> x){
+levelUI.readOrders(x);
+
+
 }
+}
+    
