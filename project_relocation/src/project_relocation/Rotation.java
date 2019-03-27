@@ -14,7 +14,7 @@ import javafx.scene.input.KeyCode;
  * @author Marc
  */
 public class Rotation extends Orders{
-    private double angle = 0;
+    private double angle = 25;
     public Rotation(){
         Label l1 = new Label("Angle");    
     TextField tf1 = new TextField();
