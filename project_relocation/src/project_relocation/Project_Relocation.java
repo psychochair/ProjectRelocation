@@ -28,6 +28,9 @@ public class Project_Relocation extends Application{
    
 private static Stage mainStage;
 
+//Songs
+    Media song=new Media(Paths.get("src/song1.mp3").toUri().toString());
+    MediaPlayer songPlayer=new MediaPlayer(song);    
 
 //SET METHOD FOR THE MAIN STAGE - SET A NEW SCENE
 public static void setScene(Scene x) {
@@ -187,6 +190,8 @@ public static Scene getSelectionMenu() {
         primaryStage.setTitle("Project_Relocation");
         primaryStage.setScene(sceneMenu1);
         primaryStage.show();
+//Music 
+        songPlayer.play();        
         
     }
     
