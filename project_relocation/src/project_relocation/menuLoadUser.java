@@ -32,6 +32,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -45,6 +47,73 @@ import javax.swing.JComboBox;
 public class menuLoadUser extends BorderPane implements UI {
     
     public menuLoadUser(User user) {
+        
+//Design Values
+        int insetSize1=10;
+        
+        int buttonFontSize1=32;
+        String buttonFontFamily1="\"AR Delaney\"";
+        
+        int labelFontSize1=44;
+        String labelFontFamily1="\"AR Delaney\"";
+        
+        int comboBoxFontSize1=28;
+        String comboBoxFontFamily1="\"AR Delaney\"";        
+        
+        
+        String buttonStyle1="-fx-background-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+buttonFontFamily1+"; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-insets: 0,1,2,3,0; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+buttonFontSize1+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+        String labelStyle1="-fx-font-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+labelFontFamily1+"; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+labelFontSize1+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+        String comboBoxStyle1="-fx-background-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+comboBoxFontFamily1+"; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-insets: 0,1,2,3,0; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+comboBoxFontSize1+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+//Background image
+        Image background = new Image("menu1Background2.png",1300,650,true,true);
+        ImageView backgroundView = new ImageView(background);
+        
+        this.getChildren().add(backgroundView);
+        
+//Code starts here        
         BufferedReader in = null;
         try {
             //Creating interface
@@ -52,7 +121,10 @@ public class menuLoadUser extends BorderPane implements UI {
             mainPane.setAlignment(Pos.CENTER);
             VBox vBox=new VBox(10);
             HBox buttonBox=new HBox(10);
+            
             Label message=new Label("Search for your username, the press enter");
+            message.setStyle(labelStyle1);
+            
 //storing every username into an array for combobox
             in = new BufferedReader(new FileReader("resources/usernames.txt"));
             String str;
@@ -62,9 +134,17 @@ public class menuLoadUser extends BorderPane implements UI {
             }   String[] stringArr = list.toArray(new String[0]);
             ObservableList<String> options = FXCollections.observableArrayList(list);
             final ComboBox comboBox = new ComboBox(options);
+            comboBox.setStyle(comboBoxStyle1);
+            
             Button confirm=new Button("Confirm");
+            confirm.setStyle(buttonStyle1);
+            
             Button back=new Button("Back");
+            back.setStyle(buttonStyle1);
+            
+            
             Label errorMessage=new Label("");
+            
             buttonBox.getChildren().addAll(confirm,back);
             vBox.getChildren().addAll(message,comboBox,buttonBox,errorMessage);
             mainPane.getChildren().addAll(vBox);
@@ -88,11 +168,15 @@ public class menuLoadUser extends BorderPane implements UI {
                         String username=(String)comboBox.getValue();
                         System.out.println(username);
                         user.setUsername(username);
+                        
+
                         try {
                             user.actualizeFile();
                         } catch (IOException ex) {
                             Logger.getLogger(menuLoadUser.class.getName()).log(Level.SEVERE, null, ex);
                         }
+//If successful, launch next scene                        
+                        Project_Relocation.setScene(Project_Relocation.getSelectionMenu());
                     }
                 }
             });
