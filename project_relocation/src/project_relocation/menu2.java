@@ -29,22 +29,30 @@ public class menu2 extends BorderPane implements UI{
     public menu2(){
   
         
+       TextArea bobMessage = new TextArea();
+        bobMessage.setMinSize(300, 300);
+        bobMessage.setText("Hi! Bob needs a co-captain to assist him in piloting the rocket. He is far from his homeland and wants despiratly to go back. "
+                + "Unfortunetly, Bob's home is so far that he needs to refuel his ship on 6 different planets along the way. Can and will you help Bob reach his "
+                + "planet? ");
+        bobMessage.setWrapText(true);
+        bobMessage.setMaxSize(300, 300);
+        bobMessage.setLayoutX(widthImage);
+        bobMessage.setLayoutY(heightImage);
+        bobMessage.setEditable(false);
+        
+        
         ImageView imageViewPageIntro = new ImageView();
         Image imageBobTalking = new Image("astronautPNG.png");
         imageViewPageIntro.setPreserveRatio(true);
         imageViewPageIntro.setFitHeight(heightImage);
         imageViewPageIntro.setFitWidth(widthImage);
         imageViewPageIntro.setImage(imageBobTalking);
-        this.setCenter(imageViewPageIntro);
+        //this.setCenter(imageViewPageIntro);
         
-        TextField bobMessage = new TextField();
-        bobMessage.setText("Hi, will you help Bob on his mission");
-     //   Hbox 
-        bobMessage.setAlignment(Pos.CENTER);
-        bobMessage.setLayoutX(widthImage);
-        bobMessage.setLayoutY(heightImage);
-        bobMessage.setEditable(false);
-        this.setLeft(bobMessage);
+        HBox message = new HBox(bobMessage, imageViewPageIntro);
+        message.setAlignment(Pos.CENTER_LEFT);
+        message.setAlignment(Pos.CENTER);
+        this.setCenter(message);
         
         
         //GRID PANE FOR BUTTONS CHOICE
