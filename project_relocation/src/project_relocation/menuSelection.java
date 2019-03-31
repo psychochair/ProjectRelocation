@@ -59,24 +59,24 @@ public class menuSelection extends BorderPane implements UI {
          this.setCenter(table);
         
        
-        imageLevelLayout("testLevel.jpg", 1, table);
-        imageLevelLayout("testLevel.jpg",  2, table);
-        imageLevelLayout("testLevel.jpg",  3, table);
-        imageLevelLayout("testLevel.jpg",  4, table);
-        imageLevelLayout("testLevel.jpg",  5, table);
-        imageLevelLayout("testLevel.jpg",  6, table);
-        imageLevelLayout("testLevel.jpg",  7, table);
-        imageLevelLayout("testLevel.jpg",  8, table);
-        imageLevelLayout("testLevel.jpg",  9, table);
-        imageLevelLayout("testLevel.jpg",  10, table);
-        imageLevelLayout("testLevel.jpg",  11, table);
-        imageLevelLayout("testLevel.jpg",  12, table);
-        imageLevelLayout("testLevel.jpg",  13, table);
-        imageLevelLayout("testLevel.jpg",  14, table);
-        imageLevelLayout("testLevel.jpg",  15, table);
-        imageLevelLayout("testLevel.jpg",  16, table);
-        imageLevelLayout("testLevel.jpg",  17, table);
-        imageLevelLayout("testLevel.jpg",  18, table);
+        imageLevelLayout("alien.png", 1, table);
+        imageLevelLayout("alien.png",  2, table);
+        imageLevelLayout("alien.png",  3, table);
+        imageLevelLayout("alien.png",  4, table);
+        imageLevelLayout("alien.png",  5, table);
+        imageLevelLayout("alien.png",  6, table);
+        imageLevelLayout("alien.png",  7, table);
+        imageLevelLayout("alien.png",  8, table);
+        imageLevelLayout("alien.png",  9, table);
+        imageLevelLayout("alien.png",  10, table);
+        imageLevelLayout("alien.png",  11, table);
+        imageLevelLayout("alien.png",  12, table);
+        imageLevelLayout("alien.png",  13, table);
+        imageLevelLayout("alien.png",  14, table);
+        imageLevelLayout("alien.png",  15, table);
+        imageLevelLayout("alien.png",  16, table);
+        imageLevelLayout("alien.png",  17, table);
+        imageLevelLayout("alien.png",  18, table);
         
         buttonLevelLayout(bMission1, 1, table);
         buttonLevelLayout(bMission2,  2, table);
@@ -222,8 +222,8 @@ public class menuSelection extends BorderPane implements UI {
             ImageView image1 = new ImageView();
             Image imageMission1 = new Image(url);
             image1.setPreserveRatio(true);
-            image1.setFitHeight(heightImage);
-            image1.setFitWidth(widthImage);
+            image1.setFitHeight(heightImage- 25);
+            image1.setFitWidth(widthImage- 25);
             image1.setImage(imageMission1);
             
             if(numberMission==1 || numberMission==4 || numberMission==7 || numberMission==10 || numberMission==13 || numberMission==16 ){
