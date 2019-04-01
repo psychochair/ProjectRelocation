@@ -5,11 +5,27 @@
  */
 package project_relocation;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author sandr
  */
 public class Level_15 extends GameUI{
     
-    Level level_15=new Level();
+    Level levelUI=new Level();
+     
+    public Level_15(){
+
+
+
+    
+    this.getChildren().add(levelUI);
+    
+    }
+public void readOrders(ArrayList<Orders> x){
+levelUI.readOrders(x);
+
+
+}
 }
