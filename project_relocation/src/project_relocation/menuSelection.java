@@ -29,13 +29,85 @@ public class menuSelection extends BorderPane implements UI {
         
     public menuSelection(){
         
+//Design Values
+        int insetSize1=10;
+        
+        int buttonFontSize1=32;
+        int buttonFontSize2=14;
+        String buttonFontFamily1="\"AR Delaney\"";
+        
+        int labelFontSize1=44;
+        String labelFontFamily1="\"AR Delaney\"";
+        
+        int comboBoxFontSize1=28;
+        String comboBoxFontFamily1="\"AR Delaney\"";        
+        
+        
+        String buttonStyle1="-fx-background-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+buttonFontFamily1+"; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-insets: 0,1,2,3,0; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+buttonFontSize2+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+        String labelStyle1="-fx-font-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+labelFontFamily1+"; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+labelFontSize1+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+        String comboBoxStyle1="-fx-background-color: "
+                    + "linear-gradient(#ffd65b, #e68400), "
+                    + "linear-gradient(#ffef84, #f2ba44), "
+                    + "linear-gradient(#ffea6a, #efaa22), "
+                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
+                    + "linear-gradient(from 0% 0% to 15% 50%, "
+                    + "rgba(255,255,255,0.9), "
+                    + "rgba(255,255,255,0)); "
+                + "-fx-font-family: "+comboBoxFontFamily1+"; "
+                + "-fx-background-radius: 30; "
+                + "-fx-background-insets: 0,1,2,3,0; "
+                + "-fx-text-fill: #654b00; "
+                + "-fx-font-weight: bold; "
+                + "-fx-font-size: "+comboBoxFontSize1+"px; "
+                + "-fx-padding: 10 20 10 20;";
+        
+//Background image
+        Image background = new Image("menu1Background2.png",1300,650,true,true);
+        ImageView backgroundView = new ImageView(background);
+        
+        this.getChildren().add(backgroundView);
+
+
+
+
+
+//Code starts here        
+        
         GridPane table = new GridPane();
         table.setAlignment(Pos.CENTER);
         table.setHgap(widthImage);
         table.setVgap(heightImage/4);
         
         //GRID PANE FOR BUTTONS CHOICE
-       
+        
         Button bMission1 = new Button("Mission 1");
         Button bMission2 = new Button("Mission 2");
         Button bMission3 = new Button("Mission 3");
@@ -55,28 +127,51 @@ public class menuSelection extends BorderPane implements UI {
         Button bMission17= new Button("Mission 17");
         Button bMission18= new Button("Mission 18");
         
+        bMission1.setStyle(buttonStyle1);
+        bMission2.setStyle(buttonStyle1);
+        bMission3.setStyle(buttonStyle1);
+        bMission4.setStyle(buttonStyle1);
+        bMission5.setStyle(buttonStyle1);
+        bMission6.setStyle(buttonStyle1);
+        bMission7.setStyle(buttonStyle1);
+        bMission8.setStyle(buttonStyle1);
+        bMission9.setStyle(buttonStyle1);
+        bMission10.setStyle(buttonStyle1);
+        bMission11.setStyle(buttonStyle1);
+        bMission12.setStyle(buttonStyle1);
+        bMission13.setStyle(buttonStyle1);
+        bMission14.setStyle(buttonStyle1);
+        bMission15.setStyle(buttonStyle1);
+        bMission16.setStyle(buttonStyle1);
+        bMission17.setStyle(buttonStyle1);
+        bMission18.setStyle(buttonStyle1);
+        
+        
+        
+        
+        
 
          this.setCenter(table);
         
        
-        imageLevelLayout("alien.png", 1, table);
-        imageLevelLayout("alien.png",  2, table);
-        imageLevelLayout("alien.png",  3, table);
-        imageLevelLayout("alien.png",  4, table);
-        imageLevelLayout("alien.png",  5, table);
-        imageLevelLayout("alien.png",  6, table);
-        imageLevelLayout("alien.png",  7, table);
-        imageLevelLayout("alien.png",  8, table);
-        imageLevelLayout("alien.png",  9, table);
-        imageLevelLayout("alien.png",  10, table);
-        imageLevelLayout("alien.png",  11, table);
-        imageLevelLayout("alien.png",  12, table);
-        imageLevelLayout("alien.png",  13, table);
-        imageLevelLayout("alien.png",  14, table);
-        imageLevelLayout("alien.png",  15, table);
-        imageLevelLayout("alien.png",  16, table);
-        imageLevelLayout("alien.png",  17, table);
-        imageLevelLayout("alien.png",  18, table);
+        imageLevelLayout("testLevel.jpg", 1, table);
+        imageLevelLayout("testLevel.jpg",  2, table);
+        imageLevelLayout("testLevel.jpg",  3, table);
+        imageLevelLayout("testLevel.jpg",  4, table);
+        imageLevelLayout("testLevel.jpg",  5, table);
+        imageLevelLayout("testLevel.jpg",  6, table);
+        imageLevelLayout("testLevel.jpg",  7, table);
+        imageLevelLayout("testLevel.jpg",  8, table);
+        imageLevelLayout("testLevel.jpg",  9, table);
+        imageLevelLayout("testLevel.jpg",  10, table);
+        imageLevelLayout("testLevel.jpg",  11, table);
+        imageLevelLayout("testLevel.jpg",  12, table);
+        imageLevelLayout("testLevel.jpg",  13, table);
+        imageLevelLayout("testLevel.jpg",  14, table);
+        imageLevelLayout("testLevel.jpg",  15, table);
+        imageLevelLayout("testLevel.jpg",  16, table);
+        imageLevelLayout("testLevel.jpg",  17, table);
+        imageLevelLayout("testLevel.jpg",  18, table);
         
         buttonLevelLayout(bMission1, 1, table);
         buttonLevelLayout(bMission2,  2, table);
@@ -222,8 +317,8 @@ public class menuSelection extends BorderPane implements UI {
             ImageView image1 = new ImageView();
             Image imageMission1 = new Image(url);
             image1.setPreserveRatio(true);
-            image1.setFitHeight(heightImage- 25);
-            image1.setFitWidth(widthImage- 25);
+            image1.setFitHeight(heightImage);
+            image1.setFitWidth(widthImage);
             image1.setImage(imageMission1);
             
             if(numberMission==1 || numberMission==4 || numberMission==7 || numberMission==10 || numberMission==13 || numberMission==16 ){
