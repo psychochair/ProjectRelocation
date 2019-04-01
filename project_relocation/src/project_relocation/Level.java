@@ -28,6 +28,7 @@ import javafx.scene.shape.Ellipse;
  */
 public class Level extends Pane{
     AnimationTimer timer;
+    boolean rocketHasDied = false;
 SequentialTransition theTimelineAnimation = new SequentialTransition();
       
         Group rocketGroup = new Group();
@@ -74,7 +75,7 @@ this.toBack();
       rocketImageView.setLayoutY(-44);
       
         rocketGroup.getChildren().addAll(rocketShape, rocketImageView);
-        rocketGroup.setLayoutY(levelHeight - 40);
+        rocketGroup.setLayoutY(levelHeight - 60);
         rocketGroup.setLayoutX(levelWidth/2);
         
         
@@ -86,14 +87,19 @@ this.toBack();
         timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
+                if(!rocketHasDied){
 double realValueX = rocketGroup.getLayoutX() + rocketGroup.getTranslateX();
 double realValueY = rocketGroup.getLayoutY() + rocketGroup.getTranslateY();
 if(realValueX <=115+30 || realValueX >= (levelWidth +120 -40)){
-System.out.println("WOOOOOW STOOOOP");
-}else if(realValueY > levelHeight || realValueY <40){
-System.out.println("WOOOOOW STOOOOP");
+rocketHasDied = true;
+System.out.println("IS DEAD");
+theTimelineAnimation.stop();
+}else if(realValueY > levelHeight - 35 || realValueY <40){
+    rocketHasDied = true;
+    System.out.println("IS DEAD");
+    theTimelineAnimation.stop();
 }
-                
+            }  
             }
  
         };
@@ -216,8 +222,12 @@ System.out.println("WOOOOOW STOOOOP");
             Timeline waitTimeline = new Timeline();
 
             double waitValue = ((Wait)(theBlock)).getDuration();
-            double finalYAfterWait = currentTranslateForWait + (0.5*waitValue*waitValue*gravity);
-                
+            
+            double finalYAfterWait = 0;
+            if(currentTranslateForWait != 0){
+            finalYAfterWait = currentTranslateForWait + (0.5*waitValue*waitValue*gravity);
+            }
+            
                 
                 
         KeyFrame wait = new KeyFrame(javafx.util.Duration.millis(waitValue*1000),
@@ -252,9 +262,11 @@ System.out.println("WOOOOOW STOOOOP");
         }
         
         rocketShape.setAngle(finalAngle);
+            double finalYAfterRotation = 0;
+            if(currentTranslateForRot != 0){
+            finalYAfterRotation = currentTranslateForRot + (0.5*2*2*gravity);
+            }
             
-            
-            double finalYAfterRotation = currentTranslateForRot + (0.5*2*2*gravity);
                 
                 
                 
