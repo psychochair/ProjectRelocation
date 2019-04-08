@@ -39,6 +39,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javax.swing.JComboBox;
+import static project_relocation.Project_Relocation.buttonStyle1;
+import static project_relocation.Project_Relocation.buttonStyle2;
+import static project_relocation.Project_Relocation.comboBoxStyle1;
+import static project_relocation.Project_Relocation.labelStyle1;
+import static project_relocation.Project_Relocation.user;
 
 /**
  *
@@ -46,66 +51,9 @@ import javax.swing.JComboBox;
  */
 public class menuLoadUser extends BorderPane implements UI {
     
-    public menuLoadUser(User user) {
+    public menuLoadUser() {
         
-//Design Values
-        int insetSize1=10;
-        
-        int buttonFontSize1=32;
-        String buttonFontFamily1="\"AR Delaney\"";
-        
-        int labelFontSize1=44;
-        String labelFontFamily1="\"AR Delaney\"";
-        
-        int comboBoxFontSize1=28;
-        String comboBoxFontFamily1="\"AR Delaney\"";        
-        
-        
-        String buttonStyle1="-fx-background-color: "
-                    + "linear-gradient(#ffd65b, #e68400), "
-                    + "linear-gradient(#ffef84, #f2ba44), "
-                    + "linear-gradient(#ffea6a, #efaa22), "
-                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
-                    + "linear-gradient(from 0% 0% to 15% 50%, "
-                    + "rgba(255,255,255,0.9), "
-                    + "rgba(255,255,255,0)); "
-                + "-fx-font-family: "+buttonFontFamily1+"; "
-                + "-fx-background-radius: 30; "
-                + "-fx-background-insets: 0,1,2,3,0; "
-                + "-fx-text-fill: #654b00; "
-                + "-fx-font-weight: bold; "
-                + "-fx-font-size: "+buttonFontSize1+"px; "
-                + "-fx-padding: 10 20 10 20;";
-        
-        String labelStyle1="-fx-font-color: "
-                    + "linear-gradient(#ffd65b, #e68400), "
-                    + "linear-gradient(#ffef84, #f2ba44), "
-                    + "linear-gradient(#ffea6a, #efaa22), "
-                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
-                    + "linear-gradient(from 0% 0% to 15% 50%, "
-                    + "rgba(255,255,255,0.9), "
-                    + "rgba(255,255,255,0)); "
-                + "-fx-font-family: "+labelFontFamily1+"; "
-                + "-fx-text-fill: #654b00; "
-                + "-fx-font-weight: bold; "
-                + "-fx-font-size: "+labelFontSize1+"px; "
-                + "-fx-padding: 10 20 10 20;";
-        
-        String comboBoxStyle1="-fx-background-color: "
-                    + "linear-gradient(#ffd65b, #e68400), "
-                    + "linear-gradient(#ffef84, #f2ba44), "
-                    + "linear-gradient(#ffea6a, #efaa22), "
-                    + "linear-gradient(#ffe657 0%, #f8c202 50%, #eea10b 100%), "
-                    + "linear-gradient(from 0% 0% to 15% 50%, "
-                    + "rgba(255,255,255,0.9), "
-                    + "rgba(255,255,255,0)); "
-                + "-fx-font-family: "+comboBoxFontFamily1+"; "
-                + "-fx-background-radius: 30; "
-                + "-fx-background-insets: 0,1,2,3,0; "
-                + "-fx-text-fill: #654b00; "
-                + "-fx-font-weight: bold; "
-                + "-fx-font-size: "+comboBoxFontSize1+"px; "
-                + "-fx-padding: 10 20 10 20;";
+
         
 //Background image
         Image background = new Image("menu1Background2.png",1300,650,true,true);
@@ -122,7 +70,7 @@ public class menuLoadUser extends BorderPane implements UI {
             VBox vBox=new VBox(10);
             HBox buttonBox=new HBox(10);
             
-            Label message=new Label("Search for your username, the press enter");
+            Label message=new Label("Search for your username \nthen press enter");
             message.setStyle(labelStyle1);
             
 //storing every username into an array for combobox
