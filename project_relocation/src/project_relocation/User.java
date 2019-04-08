@@ -18,7 +18,34 @@ import java.util.Scanner;
  * @author chasa
  */
 
-//YOOOO FAUT TROUVER COMMENT EXTEND ROCKET
+//////////////////////FILE FORMAT/////////////////////
+/*
+
+1   levelsCompleted
+2   stars
+3   fuelCapacity
+4   protection
+5   engineType
+6   lvl_1Stars
+7   lvl_2Stars
+8   lvl_3Stars
+9   lvl_4Stars
+10  lvl_5Stars
+11  lvl_6Stars
+12  lvl_7Stars
+13  lvl_8Stars
+14  lvl_9Stars
+15  lvl_10Stars
+16  lvl_11Stars
+17  lvl_12Stars
+18  lvl_13Stars
+18  lvl_14Stars
+18  lvl_15Stars
+18  lvl_16Stars
+18  lvl_17Stars
+18  lvl_18Stars
+
+*/
 public class User {
     
     private String username;
@@ -66,8 +93,7 @@ public class User {
         writer.close();
         
     }
-    
-    
+        
     
     public String getUsername() {
         return username;
@@ -75,6 +101,8 @@ public class User {
     public void setUsername(String username) {
         this.username=username;
     }
+    
+    
     public String getFilePath() {
         return filePath;
     }
@@ -82,6 +110,10 @@ public class User {
     public void setFilePath(String filePath) {
         this.filePath = filePath;
     }
+    
+    
+    
+    
     
     public int getLevelsCompleted() throws IOException {
         return levelsCompleted;
@@ -91,7 +123,16 @@ public class User {
         this.levelsCompleted=levelsCompleted;   
         writeFile();
     }
-
+    
+    public void addLevelsCompleted() throws FileNotFoundException, IOException{
+        this.levelsCompleted=levelsCompleted+1;
+        writeFile();
+    }
+    
+    
+    
+    
+    
     public int getStars() {
         return stars;
     }
@@ -100,6 +141,13 @@ public class User {
         this.stars = stars;
         writeFile();
     }
+    public void addStars() throws FileNotFoundException, IOException {
+        this.stars = stars+1;
+    }
+    
+    
+    
+    
 
     public int getFuelCapacity() {
         return fuelCapacity;
